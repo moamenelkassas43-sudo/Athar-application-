@@ -5,12 +5,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>منصة أثر - تقديم المقترحات</title>
   <link rel="stylesheet" href="style.css">
+  
+  <!-- تهيئة سكريبت Formspree AJAX الرسمية -->
+  <script>
+    window.formspree = window.formspree || function () { (formspree.q = formspree.q || []).push(arguments); };
+    formspree('initForm', { formElement: '#atharForm', formId: 'xvkopbwz' });
+  </script>
+  <script src="https://unpkg.com/@formspree/ajax@1" defer></script>
 </head>
 <body>
 
   <div class="main-card">
     
-    <!-- قسم الهيدر والصورة الشخصية -->
+    <!-- قسم الصورة الشخصية والهيدر -->
     <div class="profile-header">
       <div class="avatar-container">
         <img src="profile.jpg" alt="الصورة الشخصية" class="profile-img">
@@ -19,43 +26,52 @@
       <p class="subtitle">شاركونا أفكاركم ومقترحاتكم لتطوير المبادرة</p>
     </div>
 
-    <!-- النموذج -->
-    <form id="atharForm" action="https://formspree.io/f/moamenelekassas43@gmail.com" method="POST">
+    <!-- رسالة النجاح العامة -->
+    <div data-fs-success class="status-alert success-box">تم إرسال فكرتك بنجاح! شكرًا لمشاركتك. ✨</div>
+    
+    <!-- رسالة الخطأ العامة -->
+    <div data-fs-error class="status-alert error-box"></div>
+
+    <!-- النموذج مع الخاصية الرسمية data-fs-field لكل حقل -->
+    <form id="atharForm">
       
       <div class="input-group">
         <label for="from_name">اسم الطالب</label>
-        <input type="text" id="from_name" name="from_name" required placeholder="أدخل اسمك بالكامل">
+        <input type="text" id="from_name" name="from_name" data-fs-field required placeholder="أدخل اسمك بالكامل">
+        <span data-fs-error="from_name" class="field-error"></span>
       </div>
 
       <div class="input-group">
         <label for="gender">النوع</label>
-        <select id="gender" name="gender" required>
+        <select id="gender" name="gender" data-fs-field required>
           <option value="" disabled selected>اختر النوع</option>
           <option value="ذكر">ذكر</option>
           <option value="أنثى">أنثى</option>
         </select>
+        <span data-fs-error="gender" class="field-error"></span>
       </div>
 
       <div class="input-group">
         <label for="district">الإدارة التعليمية</label>
-        <input type="text" id="district" name="district" required placeholder="أدخل إدارتك التعليمية">
+        <input type="text" id="district" name="district" data-fs-field required placeholder="أدخل إدارتك التعليمية">
+        <span data-fs-error="district" class="field-error"></span>
       </div>
 
       <div class="input-group">
         <label for="grade">الصف الدراسي</label>
-        <input type="text" id="grade" name="grade" required placeholder="مثال: الصف الثاني الثانوي">
+        <input type="text" id="grade" name="grade" data-fs-field required placeholder="مثال: الصف الثاني الثانوي">
+        <span data-fs-error="grade" class="field-error"></span>
       </div>
 
       <div class="input-group">
         <label for="message">الفكرة / المقترح</label>
-        <textarea id="message" name="message" required placeholder="اكتب تفاصيل فكرتك هنا..."></textarea>
+        <textarea id="message" name="message" data-fs-field required placeholder="اكتب تفاصيل فكرتك هنا..."></textarea>
+        <span data-fs-error="message" class="field-error"></span>
       </div>
 
-      <button type="submit" id="submitBtn" class="btn-submit">إرسال الفكرة</button>
+      <!-- زر الإرسال مع الخاصية data-fs-submit-btn لتأطيره وتجميده تلقائياً أثناء الإرسال -->
+      <button type="submit" data-fs-submit-btn class="btn-submit">إرسال الفكرة</button>
     </form>
-
-    <!-- صندوق التنبيهات -->
-    <div id="status-box"></div>
 
   </div>
 
