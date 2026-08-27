@@ -3,250 +3,62 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>منصة أثر - تقديم المشاريع والمقترحات</title>
-  
-  <style>
-    /* ==========================================
-       1. التنسيقات العامة والتصميم (CSS)
-       ========================================== */
-    :root {
-      --primary-color: #2e7d32;
-      --primary-hover: #1b5e20;
-      --bg-color: #f4f7f6;
-      --card-bg: #ffffff;
-      --text-color: #333333;
-      --border-color: #cccccc;
-      --error-color: #d32f2f;
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
-
-    body {
-      background-color: var(--bg-color);
-      color: var(--text-color);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-      padding: 20px;
-    }
-
-    .container {
-      background-color: var(--card-bg);
-      width: 100%;
-      max-width: 550px;
-      padding: 35px 30px;
-      border-radius: 16px;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
-      border: 1px solid #e0e0e0;
-    }
-
-    .header-section {
-      text-align: center;
-      margin-bottom: 25px;
-    }
-
-    .header-section h1 {
-      color: var(--primary-color);
-      font-size: 26px;
-      margin-bottom: 8px;
-    }
-
-    .header-section p {
-      color: #666;
-      font-size: 14px;
-    }
-
-    .form-group {
-      margin-bottom: 18px;
-    }
-
-    .form-group label {
-      display: block;
-      margin-bottom: 7px;
-      font-weight: 600;
-      font-size: 14px;
-      color: #444;
-    }
-
-    .form-group input,
-    .form-group select,
-    .form-group textarea {
-      width: 100%;
-      padding: 12px 14px;
-      border: 1.5px solid var(--border-color);
-      border-radius: 8px;
-      font-size: 15px;
-      outline: none;
-      transition: border-color 0.3s ease, box-shadow 0.3s ease;
-      background-color: #fafafa;
-    }
-
-    .form-group input:focus,
-    .form-group select:focus,
-    .form-group textarea:focus {
-      border-color: var(--primary-color);
-      box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.15);
-      background-color: #fff;
-    }
-
-    .form-group textarea {
-      resize: vertical;
-      min-height: 110px;
-    }
-
-    .submit-btn {
-      width: 100%;
-      padding: 14px;
-      background-color: var(--primary-color);
-      color: white;
-      border: none;
-      border-radius: 8px;
-      font-size: 16px;
-      font-weight: bold;
-      cursor: pointer;
-      transition: background-color 0.3s ease, transform 0.1s ease;
-      margin-top: 10px;
-    }
-
-    .submit-btn:hover {
-      background-color: var(--primary-hover);
-    }
-
-    .submit-btn:disabled {
-      background-color: #9e9e9e;
-      cursor: not-allowed;
-    }
-
-    #status-box {
-      margin-top: 20px;
-      padding: 12px;
-      border-radius: 8px;
-      text-align: center;
-      font-size: 14px;
-      font-weight: 600;
-      display: none;
-    }
-
-    #status-box.success {
-      background-color: #e8f5e9;
-      color: var(--primary-color);
-      border: 1px solid #a5d6a7;
-    }
-
-    #status-box.error {
-      background-color: #ffebee;
-      color: var(--error-color);
-      border: 1px solid #ef9a9a;
-    }
-  </style>
+  <title>منصة أثر - تقديم المقترحات</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <div class="container">
-    <div class="header-section">
-      <h1>منصة أثر 💡</h1>
-      <p>قم بتعبئة النموذج لتقديم فكرتك أو مقترحك للمنصة</p>
+  <div class="main-card">
+    
+    <!-- قسم الهيدر والصورة الشخصية -->
+    <div class="profile-header">
+      <div class="avatar-container">
+        <img src="profile.jpg" alt="الصورة الشخصية" class="profile-img">
+      </div>
+      <h2 class="title">منصة أثر 💡</h2>
+      <p class="subtitle">شاركونا أفكاركم ومقترحاتكم لتطوير المبادرة</p>
     </div>
 
-    <!-- ==========================================
-         2. هيكل البيانات والمدخلات (HTML)
-         ========================================== -->
+    <!-- النموذج -->
     <form id="atharForm" action="https://formspree.io/f/moamenelekassas43@gmail.com" method="POST">
       
-      <div class="form-group">
-        <label for="from_name">اسم الطالب بالكامل</label>
-        <input type="text" id="from_name" name="from_name" required placeholder="أدخل اسمك الثلاثي أو الرباعي">
+      <div class="input-group">
+        <label for="from_name">اسم الطالب</label>
+        <input type="text" id="from_name" name="from_name" required placeholder="أدخل اسمك بالكامل">
       </div>
 
-      <div class="form-group">
+      <div class="input-group">
         <label for="gender">النوع</label>
         <select id="gender" name="gender" required>
-          <option value="" disabled selected>اختر الجنس</option>
+          <option value="" disabled selected>اختر النوع</option>
           <option value="ذكر">ذكر</option>
           <option value="أنثى">أنثى</option>
         </select>
       </div>
 
-      <div class="form-group">
+      <div class="input-group">
         <label for="district">الإدارة التعليمية</label>
-        <input type="text" id="district" name="district" required placeholder="مثال: إدارة شبين الكوم التعليمية">
+        <input type="text" id="district" name="district" required placeholder="أدخل إدارتك التعليمية">
       </div>
 
-      <div class="form-group">
+      <div class="input-group">
         <label for="grade">الصف الدراسي</label>
         <input type="text" id="grade" name="grade" required placeholder="مثال: الصف الثاني الثانوي">
       </div>
 
-      <div class="form-group">
-        <label for="message">تفاصيل الفكرة / المقترح</label>
-        <textarea id="message" name="message" required placeholder="اشرح فكرتك بوضوح هنا..."></textarea>
+      <div class="input-group">
+        <label for="message">الفكرة / المقترح</label>
+        <textarea id="message" name="message" required placeholder="اكتب تفاصيل فكرتك هنا..."></textarea>
       </div>
 
-      <button type="submit" id="submitBtn" class="submit-btn">إرسال المقترح</button>
+      <button type="submit" id="submitBtn" class="btn-submit">إرسال الفكرة</button>
     </form>
 
+    <!-- صندوق التنبيهات -->
     <div id="status-box"></div>
+
   </div>
 
-  <!-- ==========================================
-       3. البرمجة والربط الذكي (JavaScript)
-       ========================================== -->
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      const form = document.getElementById('atharForm');
-      const submitBtn = document.getElementById('submitBtn');
-      const statusBox = document.getElementById('status-box');
-
-      form.addEventListener('submit', async function (e) {
-        e.preventDefault();
-
-        // 1. تغيير حالة الزر أثناء معالجة الطلب
-        submitBtn.disabled = true;
-        submitBtn.innerText = 'جاري الإرسال...';
-        statusBox.style.display = 'none';
-
-        // 2. تحويل بيانات الحقول تلقائياً إلى نسق JSON الصحيح
-        const formData = new FormData(form);
-        const data = Object.fromEntries(formData.entries());
-
-        try {
-          // 3. إرسال البيانات عبر API لخدمة Formspree
-          const response = await fetch(form.action, {
-            method: 'POST',
-            body: JSON.stringify(data),
-            headers: {
-              'Content-Type': 'application/json',
-              'Accept': 'application/json'
-            }
-          });
-
-          if (response.ok) {
-            // عرض رسالة النجاح وإعادة ضبط الاستمارة
-            statusBox.className = 'success';
-            statusBox.innerText = 'تم إرسال المقترح بنجاح! شكراً لمشاركتك المتميزة ✨';
-            statusBox.style.display = 'block';
-            form.reset();
-          } else {
-            throw new Error('فشل معالجة الطلب من السيرفر');
-          }
-        } catch (error) {
-          // عرض رسالة الخطأ
-          statusBox.className = 'error';
-          statusBox.innerText = 'تعذر الإرسال. يرجى التأكد من الاتصال بالإنترنت أو المحاولة لاحقاً.';
-          statusBox.style.display = 'block';
-        } finally {
-          // إعادة الزر إلى وضع التشغيل الطبيعي
-          submitBtn.disabled = false;
-          submitBtn.innerText = 'إرسال المقترح';
-        }
-      });
-    });
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
