@@ -1,4 +1,3 @@
-/* التنسيقات والتصميم الخاص بالمنصة */
 :root {
   --primary-color: #0d6efd;
   --primary-hover: #0b5ed7;
@@ -33,7 +32,6 @@ body {
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
 }
 
-/* تنسيق الصورة الهيدر */
 .profile-header {
   text-align: center;
   margin-bottom: 25px;
@@ -66,7 +64,6 @@ body {
   font-size: 13px;
 }
 
-/* حقول الإدخال */
 .input-group {
   margin-bottom: 16px;
   text-align: right;
@@ -101,12 +98,23 @@ body {
   box-shadow: 0 0 0 3px rgba(13, 110, 253, 0.15);
 }
 
+/* تنسيق الحقل المخطئ تلقائياً بواسطة المكتبة */
+[aria-invalid="true"] {
+  border-color: #dc3545 !important;
+}
+
+.field-error {
+  color: #dc3545;
+  font-size: 12px;
+  margin-top: 4px;
+  display: block;
+}
+
 .input-group textarea {
   resize: vertical;
   height: 100px;
 }
 
-/* زر الإرسال */
 .btn-submit {
   width: 100%;
   padding: 14px;
@@ -130,23 +138,29 @@ body {
   cursor: not-allowed;
 }
 
-/* صندوق النتيجة */
-#status-box {
-  margin-top: 15px;
+/* صناديق التنبيهات الخاصة بالمكتبة */
+.status-alert {
   padding: 12px;
   border-radius: 8px;
   text-align: center;
   font-size: 14px;
   font-weight: bold;
+  margin-bottom: 15px;
   display: none;
 }
 
-#status-box.success {
+.success-box {
   background-color: #d1e7dd;
   color: #0f5132;
 }
 
-#status-box.error {
+.error-box {
   background-color: #f8d7da;
   color: #842029;
+}
+
+/* إظهار العناصر عندما تفعلها المكتبة */
+[data-fs-success]:not(:empty),
+[data-fs-error]:not(:empty) {
+  display: block;
 }
