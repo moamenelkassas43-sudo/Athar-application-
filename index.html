@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>منصة أثر التعليمية | المبرمج التقني: مؤمن القصاص</title>
     
-    <!-- استيراد خط Cairo الحديث والاحترافي من Google Fonts -->
+    <!-- استيراد خط Cairo من Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
@@ -17,13 +17,24 @@
         :root {
             --primary-dark: #0a0f1d;
             --primary-blue: #1e293b;
-            --accent-gold: #f59e0b;
-            --accent-gold-hover: #d97706;
+            --accent-color: #f59e0b; /* اللون الافتراضي (ذهبي) */
+            --accent-glow: rgba(245, 158, 11, 0.4);
             --glass-bg: rgba(255, 255, 255, 0.05);
             --glass-border: rgba(255, 255, 255, 0.12);
-            --glass-modal: rgba(15, 23, 42, 0.85);
             --text-main: #f8fafc;
             --text-sub: #94a3b8;
+        }
+
+        /* الثيم البناتي (وردي/بنكي) */
+        body.theme-girl {
+            --accent-color: #ec4899;
+            --accent-glow: rgba(236, 72, 153, 0.5);
+        }
+
+        /* الثيم الولادي (أزرق سماوي) */
+        body.theme-boy {
+            --accent-color: #3b82f6;
+            --accent-glow: rgba(59, 130, 246, 0.5);
         }
 
         * {
@@ -43,6 +54,7 @@
             justify-content: space-between;
             overflow-x: hidden;
             position: relative;
+            transition: all 0.5s ease;
         }
 
         /* شاشة الترحيب وتأثير الكتابة التلقائية */
@@ -67,14 +79,14 @@
             padding: 20px 30px;
             border-radius: 20px;
             backdrop-filter: blur(20px);
-            box-shadow: 0 0 30px rgba(245, 158, 11, 0.2);
+            box-shadow: 0 0 30px var(--accent-glow);
         }
 
         .typewriter-text {
             font-size: 1.8rem;
             font-weight: 800;
-            color: var(--accent-gold);
-            border-left: 3px solid var(--accent-gold);
+            color: var(--accent-color);
+            border-left: 3px solid var(--accent-color);
             white-space: nowrap;
             overflow: hidden;
             animation: blink 0.75s step-end infinite;
@@ -82,7 +94,7 @@
 
         @keyframes blink {
             from, to { border-color: transparent }
-            50% { border-color: var(--accent-gold); }
+            50% { border-color: var(--accent-color); }
         }
 
         /* خلفية الفقاعات المضيئة */
@@ -93,7 +105,7 @@
             z-index: 0;
             pointer-events: none;
         }
-        .b-1 { width: 350px; height: 350px; background: rgba(245, 158, 11, 0.1); top: -100px; right: -100px; }
+        .b-1 { width: 350px; height: 350px; background: var(--accent-glow); top: -100px; right: -100px; }
         .b-2 { width: 300px; height: 300px; background: rgba(99, 102, 241, 0.12); bottom: -50px; left: -50px; }
 
         /* التصميم الزجاجي */
@@ -108,7 +120,7 @@
         }
 
         .glass-panel:hover {
-            border-color: rgba(245, 158, 11, 0.4);
+            border-color: var(--accent-color);
             box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
 
@@ -134,28 +146,40 @@
         .dev-profile {
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 18px;
         }
 
-        /* صورة المبرمج مؤمن القصاص */
+        /* صورة المبرمج: مربع كبير ومضيء بتأثير الوميض المستمر */
         .dev-avatar {
-            width: 65px;
-            height: 65px;
-            border-radius: 50%;
-            border: 2px solid var(--accent-gold);
+            width: 110px;
+            height: 110px;
+            border-radius: 16px;
             object-fit: cover;
             background: #000;
-            box-shadow: 0 0 15px rgba(245, 158, 11, 0.3);
+            border: 3px solid var(--accent-color);
+            animation: pulse-glow 2s infinite ease-in-out;
+        }
+
+        @keyframes pulse-glow {
+            0% {
+                box-shadow: 0 0 10px var(--accent-glow);
+            }
+            50% {
+                box-shadow: 0 0 25px var(--accent-glow), 0 0 40px var(--accent-glow);
+            }
+            100% {
+                box-shadow: 0 0 10px var(--accent-glow);
+            }
         }
 
         .dev-info h2 {
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             font-weight: 700;
         }
 
         .dev-info p {
-            font-size: 0.8rem;
-            color: var(--accent-gold);
+            font-size: 0.85rem;
+            color: var(--accent-color);
         }
 
         /* الملاحة والصفحات */
@@ -182,20 +206,20 @@
             color: #fff;
             outline: none;
         }
-        .form-control:focus { border-color: var(--accent-gold); }
+        .form-control:focus { border-color: var(--accent-color); }
 
         .btn-main {
             width: 100%;
             padding: 12px;
             border-radius: 12px;
             border: none;
-            background: var(--accent-gold);
-            color: #000;
+            background: var(--accent-color);
+            color: #fff;
             font-weight: 700;
             cursor: pointer;
             transition: 0.3s;
         }
-        .btn-main:hover { background: var(--accent-gold-hover); }
+        .btn-main:hover { filter: brightness(1.1); }
 
         .services-grid {
             display: grid;
@@ -209,7 +233,7 @@
             cursor: pointer;
             padding: 30px 20px;
         }
-        .service-card i { font-size: 2.2rem; color: var(--accent-gold); margin-bottom: 12px; }
+        .service-card i { font-size: 2.2rem; color: var(--accent-color); margin-bottom: 12px; }
 
         /* نافذة الفقاعة المنبثقة للأفكار */
         .modal-overlay {
@@ -234,7 +258,7 @@
             max-width: 480px;
             width: 100%;
             background: #0f172a;
-            border: 1px solid var(--accent-gold);
+            border: 1px solid var(--accent-color);
             border-radius: 20px;
             padding: 25px;
             text-align: center;
@@ -252,10 +276,9 @@
             gap: 8px;
         }
 
-        /* صندوق إضافة تعديلات الميزات المخصصة */
         .custom-feature-box {
-            background: rgba(245, 158, 11, 0.08);
-            border: 1px dashed var(--accent-gold);
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px dashed var(--accent-color);
             border-radius: 16px;
             padding: 20px;
             margin-top: 25px;
@@ -276,7 +299,7 @@
     <!-- شاشة البداية وتأثير الكتابة التلقائية -->
     <div id="splashScreen">
         <div class="typewriter-container">
-            <i class="fa-solid fa-laptop-code" style="font-size: 2rem; color: var(--accent-gold);"></i>
+            <i class="fa-solid fa-laptop-code" style="font-size: 2rem; color: var(--accent-color);"></i>
             <div id="typewriter" class="typewriter-text"></div>
         </div>
     </div>
@@ -290,7 +313,6 @@
         <!-- الترويسة وصورة المبرمج مؤمن القصاص -->
         <header>
             <div class="dev-profile">
-                <!-- تم إضافة رابط الصورة الشخصية الخاص بك هنا -->
                 <img src="https://i.postimg.cc/y8Q1HTbP/IMG-20260817-155245.png" alt="المبرمج مؤمن القصاص" class="dev-avatar" id="devPhoto">
                 
                 <div class="dev-info">
@@ -303,7 +325,7 @@
             </button>
         </header>
 
-        <!-- 1. صفحة التسجيل -->
+        <!-- 1. صفحة التسجيل والتخصيص -->
         <section id="registerPage" class="page active">
             <div class="glass-panel" style="max-width: 480px; margin: 0 auto;">
                 <h3 style="text-align: center; margin-bottom: 20px;"><i class="fa-solid fa-user-plus"></i> تسجيل دخول الطالب</h3>
@@ -312,14 +334,44 @@
                         <label>الاسم بالكامل</label>
                         <input type="text" id="userName" class="form-control" required placeholder="أدخل اسمك الكريم">
                     </div>
+                    
+                    <!-- إضافة تحديد النوع للتحكم بالألوان -->
+                    <div class="form-group">
+                        <label>النوع (الجنس)</label>
+                        <select id="userGender" class="form-control" required onchange="changeThemeByGender(this.value)">
+                            <option value="" disabled selected>اختر النوع...</option>
+                            <option value="girl">بنت (بنكي)</option>
+                            <option value="boy">ولد (أزرق)</option>
+                        </select>
+                    </div>
+
+                    <!-- اختيار إدارات محافظة كفر الشيخ -->
+                    <div class="form-group">
+                        <label>محافظة كفر الشيخ - الإدارة التعليمية / المركز</label>
+                        <select id="userDistrict" class="form-control" required>
+                            <option value="" disabled selected>اختر إدارتك...</option>
+                            <option value="إدارة سيدي سالم">إدارة سيدي سالم التعليمية</option>
+                            <option value="إدارة كفر الشيخ">إدارة كفر الشيخ التعليمية</option>
+                            <option value="إدارة دسوق">إدارة دسوق التعليمية</option>
+                            <option value="إدارة بيلا">إدارة بيلا التعليمية</option>
+                            <option value="إدارة بلطيم">إدارة بلطيم التعليمية</option>
+                            <option value="إدارة قلين">إدارة قلين التعليمية</option>
+                            <option value="إدارة الحامول">إدارة الحامول التعليمية</option>
+                            <option value="إدارة الرياض">إدارة الرياض التعليمية</option>
+                            <option value="إدارة فوه">إدارة فوه التعليمية</option>
+                            <option value="إدارة مطوبس">إدارة مطوبس التعليمية</option>
+                        </select>
+                    </div>
+
                     <div class="form-group">
                         <label>الصف الدراسي</label>
-                        <select class="form-control">
+                        <select id="userGrade" class="form-control">
                             <option>الصف الثالث الثانوي</option>
                             <option>الصف الثاني الثانوي</option>
                             <option>الصف الأول الثانوي</option>
                         </select>
                     </div>
+
                     <button type="submit" class="btn-main">دخول المنصة</button>
                 </form>
             </div>
@@ -327,8 +379,8 @@
 
         <!-- 2. الصفحة الرئيسية -->
         <section id="homePage" class="page">
-            <div class="glass-panel" style="margin-bottom: 20px; border-right: 4px solid var(--accent-gold);">
-                <h4 style="color: var(--accent-gold); margin-bottom: 5px;">أهلاً بك في منصتك الشاملة</h4>
+            <div class="glass-panel" style="margin-bottom: 20px; border-right: 4px solid var(--accent-color);">
+                <h4 style="color: var(--accent-color); margin-bottom: 5px;">أهلاً بك في منصتك الشاملة</h4>
                 <p style="font-size: 0.9rem; color: var(--text-sub);">تصفح جميع الخدمات المتاحة للطلاب بسهولة.</p>
             </div>
 
@@ -351,9 +403,8 @@
                 </div>
             </div>
 
-            <!-- مكان مخصص لإضافة التعديلات والميزات المطلوبة -->
             <div class="custom-feature-box">
-                <h4 style="color: var(--accent-gold); margin-bottom: 8px;"><i class="fa-solid fa-pen-to-square"></i> مكان إضافة الميزات والتعديلات المخصصة</h4>
+                <h4 style="color: var(--accent-color); margin-bottom: 8px;"><i class="fa-solid fa-pen-to-square"></i> مكان إضافة الميزات والتعديلات المخصصة</h4>
                 <p style="font-size: 0.85rem; color: var(--text-sub); margin-bottom: 12px;">اكتب كلمة "تعديل" والميزات التي ترغب في إضافتها وسيقوم النظام بتنفيذها تلقائياً:</p>
                 <textarea id="myCustomFeaturesInput" class="form-control" rows="3" placeholder="تعديل: اكتب الميزات المطلوبة هنا..."></textarea>
                 <button class="btn-main" style="margin-top: 10px; width: auto; padding: 8px 20px;" onclick="saveCustomFeature()">حفظ التعديل</button>
@@ -365,7 +416,7 @@
             <button class="back-btn" onclick="showPage('homePage')"><i class="fa-solid fa-arrow-right"></i> العودة</button>
             <div class="glass-panel">
                 <h3><i class="fa-solid fa-file-pdf"></i> قسم المراجع والمذكرات</h3>
-                <p style="margin: 15px 0; color: var(--text-sub);">سيتم إتاحة جميع المذكرات المخصصة قريباً أثر أفكاركم ❤</p>
+                <p style="margin: 15px 0; color: var(--text-sub);">سوف يعمل التطبيق خلال فترة قليلة أثر أفكاركم ❤</p>
                 <button class="btn-main" onclick="openIdeaModal('قسم المراجع')">أضف فكرتك لتطوير هذا القسم</button>
             </div>
         </section>
@@ -375,7 +426,7 @@
             <button class="back-btn" onclick="showPage('homePage')"><i class="fa-solid fa-arrow-right"></i> العودة</button>
             <div class="glass-panel">
                 <h3><i class="fa-solid fa-calendar-days"></i> جدول الاختبارات</h3>
-                <p style="margin: 15px 0; color: var(--text-sub);">جاري إعداد مواعيد الاختبارات أثر أفكاركم ❤</p>
+                <p style="margin: 15px 0; color: var(--text-sub);">سوف يعمل التطبيق خلال فترة قليلة أثر أفكاركم ❤</p>
                 <button class="btn-main" onclick="openIdeaModal('جدول الامتحانات')">أضف فكرتك لتطوير هذا القسم</button>
             </div>
         </section>
@@ -385,7 +436,7 @@
             <button class="back-btn" onclick="showPage('homePage')"><i class="fa-solid fa-arrow-right"></i> العودة</button>
             <div class="glass-panel">
                 <h3><i class="fa-solid fa-newspaper"></i> آخر الأخبار</h3>
-                <p style="margin: 15px 0; color: var(--text-sub);">تابع مستجدات القرارات أثر أفكاركم ❤</p>
+                <p style="margin: 15px 0; color: var(--text-sub);">سوف يعمل التطبيق خلال فترة قليلة أثر أفكاركم ❤</p>
                 <button class="btn-main" onclick="openIdeaModal('قسم الأخبار')">أضف فكرتك لتطوير هذا القسم</button>
             </div>
         </section>
@@ -404,30 +455,33 @@
         <section id="adminDashboard" class="page">
             <button class="back-btn" onclick="showPage('homePage')"><i class="fa-solid fa-arrow-right"></i> الخروج من لوحة التحكم</button>
             <div class="glass-panel">
-                <h3 style="color: var(--accent-gold);"><i class="fa-solid fa-user-gear"></i> لوحة تحكم المبرمج التقني: مؤمن القصاص</h3>
-                <p style="margin-top: 10px; color: var(--text-sub);">أهلاً بك يا مؤمن، كلمة المرور المعتمدة للوحة التحكم هي: <strong style="color: var(--accent-gold);">162010</strong></p>
+                <h3 style="color: var(--accent-color);"><i class="fa-solid fa-user-gear"></i> لوحة تحكم المبرمج التقني: مؤمن القصاص</h3>
+                <p style="margin-top: 10px; color: var(--text-sub);">أهلاً بك يا مؤمن، كلمة المرور المعتمدة للوحة التحكم هي: <strong style="color: var(--accent-color);">162010</strong></p>
             </div>
         </section>
 
     </div>
 
-    <!-- نافذة الفقاعة المنبثقة لإضافة الأفكار -->
+    <!-- نافذة الفقاعة المنبثقة للأفكار بالنص الجديد -->
     <div id="ideaModal" class="modal-overlay">
         <div class="modal-content">
-            <h3 style="color: var(--accent-gold); margin-bottom: 10px;">هذا التطبيق جاري التحديث والإعداد</h3>
+            <h3 style="color: var(--accent-color); margin-bottom: 10px;">سوف يعمل التطبيق خلال فترة قليلة</h3>
             <p style="font-size: 0.9rem; color: var(--text-sub); margin-bottom: 15px;">الرجاء إضافة أفكارك لتطويره أثر أفكاركم ❤</p>
-            <textarea id="ideaInput" class="form-control" rows="4" placeholder="اكتب فكرتك أو اقتراحك هنا..."></textarea>
-            <button class="btn-main" style="margin-top: 15px;" onclick="submitIdea()">إرسال الفكرة</button>
+
+            <form id="ideaForm" onsubmit="submitIdea(event)">
+                <textarea id="ideaInput" name="fekra" class="form-control" rows="4" placeholder="اكتب فكرتك أو اقتراحك هنا..." required></textarea>
+                <button type="submit" class="btn-main" style="margin-top: 15px;">إرسال الفكرة</button>
+            </form>
         </div>
     </div>
 
     <footer>
         <p>جميع الحقوق محفوظة &copy; 2026 - منصة أثر التعليمية</p>
-        <p style="margin-top: 5px;">تطوير وتصميم المبرمج التقني: <strong style="color: var(--accent-gold);">مؤمن القصاص</strong></p>
+        <p style="margin-top: 5px;">تطوير وتصميم المبرمج التقني: <strong style="color: var(--accent-color);">مؤمن القصاص</strong></p>
     </footer>
 
     <script>
-        // 1. تأثير الكتابة التلقائية عند التشغيل
+        // 1. كتابة النص التلقائي
         const splashText = "أثر دليلك الشامل";
         let index = 0;
 
@@ -446,30 +500,65 @@
         }
         window.onload = typeWriter;
 
-        // 2. التنقل بين الصفحات
+        // 2. تغيير الثيم بحسب جنس الطالب (بنت / ولد)
+        function changeThemeByGender(gender) {
+            document.body.classList.remove('theme-girl', 'theme-boy');
+            if (gender === 'girl') {
+                document.body.classList.add('theme-girl');
+            } else if (gender === 'boy') {
+                document.body.classList.add('theme-boy');
+            }
+        }
+
+        // 3. التنقل بين الصفحات
         function showPage(pageId) {
             document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
             document.getElementById(pageId).classList.add('active');
             window.scrollTo(0, 0);
         }
 
-        // 3. تسجيل الدخول وإظهار فقاعة التحديث
+        // 4. تسجيل الدخول
+        let currentStudent = {};
         function handleLogin(e) {
             e.preventDefault();
+            currentStudent.name = document.getElementById('userName').value;
+            currentStudent.gender = document.getElementById('userGender').value;
+            currentStudent.district = document.getElementById('userDistrict').value;
+            currentStudent.grade = document.getElementById('userGrade').value;
+            
             showPage('homePage');
             setTimeout(() => {
                 openIdeaModal('الصفحة الرئيسية');
             }, 500);
         }
 
-        // 4. التحكم بفقاعة الأفكار
+        // 5. فتح وإرسال الفقاعة المنبثقة
         function openIdeaModal(sectionName) {
             document.getElementById('ideaModal').classList.add('active');
         }
 
-        function submitIdea() {
+        async function submitIdea(e) {
+            e.preventDefault();
             const input = document.getElementById('ideaInput');
-            if (input.value.trim() !== '') {
+            const fekraText = input.value.trim();
+
+            if (fekraText !== '') {
+                try {
+                    await fetch('https://formspree.io/f/YOUR_FORMSPREE_ID', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            student_name: currentStudent.name || 'طالب',
+                            gender: currentStudent.gender || 'غير محدد',
+                            district: currentStudent.district || 'محافظة كفر الشيخ',
+                            grade: currentStudent.grade || 'غير محدد',
+                            idea: fekraText
+                        })
+                    });
+                } catch (err) {
+                    console.log('Error sending:', err);
+                }
+
                 alert('شكراً لك 😍');
                 input.value = '';
                 document.getElementById('ideaModal').classList.remove('active');
@@ -478,7 +567,7 @@
             }
         }
 
-        // 5. حماية لوحة التحكم بكلمة المرور (162010)
+        // 6. لوحة التحكم برمز الحماية (162010)
         function openAdminModal() {
             const pwd = prompt("أدخل كلمة المرور الخاصة بالمبرمج مؤمن القصاص:");
             if (pwd === "162010") {
@@ -488,7 +577,7 @@
             }
         }
 
-        // 6. حفظ التعديلات والميزات المخصصة
+        // 7. حفظ التعديل المخصص
         function saveCustomFeature() {
             const val = document.getElementById('myCustomFeaturesInput').value;
             if (val.trim() !== '') {
