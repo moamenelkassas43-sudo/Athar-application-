@@ -1,29 +1,27 @@
 document.addEventListener('DOMContentLoaded', function () {
-  const form = document.getElementById('ideaForm');
-  const statusMessage = document.getElementById('status-message');
-  const submitBtn = document.getElementById('submitBtn');
+  // البحث عن النموذج بطريقته القديمة أو بأول نموذج بالصفحة
+  const form = document.getElementById('ideaForm') || document.querySelector('form');
 
   if (!form) return;
 
   form.addEventListener('submit', async function (e) {
     e.preventDefault();
 
-    // 1. تحديث حالة الزر والواجهة أثناء الإرسال
-    submitBtn.disabled = true;
-    const originalBtnText = submitBtn.innerText;
-    submitBtn.innerText = 'جاري الإرسال...';
-    
-    if (statusMessage) {
-      statusMessage.style.display = 'none';
-      statusMessage.className = '';
+    // تحديد زر الإرسال تلقائياً للحفاظ على شكله الحالي
+    const submitBtn = form.querySelector('button[type="submit"]') || form.querySelector('button');
+    const originalBtnText = submitBtn ? submitBtn.innerText : '';
+
+    if (submitBtn) {
+      submitBtn.disabled = true;
+      submitBtn.innerText = 'جاري الإرسال...';
     }
 
-    // 2. تجميع البيانات من النموذج
+    // تجميع البيانات من العناصر القديمة كما هي
     const formData = new FormData(form);
     const data = Object.fromEntries(formData.entries());
 
     try {
-      // 3. محاولة الإرسال الحديث عبر Fetch بترميز JSON الصريح
+      // إرسال البيانات بصيغة JSON متوافقة مع Formspree
       const response = await fetch(form.action, {
         method: 'POST',
         body: JSON.stringify(data),
@@ -34,30 +32,19 @@ document.addEventListener('DOMContentLoaded', function () {
       });
 
       if (response.ok) {
-        // نجاح الإرسال
-        if (statusMessage) {
-          statusMessage.className = 'success';
-          statusMessage.innerText = 'تم إرسال فكرتك بنجاح! شكرًا لمشاركتك. ✨';
-          statusMessage.style.display = 'block';
-        } else {
-          alert('تم إرسال فكرتك بنجاح! شكرًا لمشاركتك. ✨');
-        }
+        alert('تم إرسال فكرتك بنجاح! شكرًا لمشاركتك. ✨');
         form.reset();
       } else {
-        throw new Error('فشل الاستجابة من السيرفر');
+        const errorData = await response.json();
+        alert('حدث خطأ أثناء الإرسال، يرجى التأكد من ملء جميع الحقول المطلوبة.');
       }
     } catch (error) {
-      // 4. في حالة وجود أي خطأ، يتم الاعتماد على طريقة الإرسال المباشر (القديمة) لضمان عدم ضياع الرسالة
-      console.warn('جاري التراجع للطريقة التقليدية للارسال...', error);
-      
-      // إنشاء نموذج مؤقت واستبدال طريقة الإرسال ليعمل تلقائياً
-      form.removeEventListener('submit', arguments.callee);
-      form.submit();
+      alert('تعذر الاتصال بالسيرفر. يرجى التحقق من الاتصال بالإنترنت والمحاولة مجدداً.');
     } finally {
-      // إرجاع الزر لحالته الأصلية
-      submitBtn.disabled = false;
-      submitBtn.innerText = originalBtnText;
+      if (submitBtn) {
+        submitBtn.disabled = false;
+        submitBtn.innerText = originalBtnText;
+      }
     }
   });
 });
-
