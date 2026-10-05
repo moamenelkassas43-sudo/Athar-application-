@@ -3,346 +3,209 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>منصة اتحاد طلاب المدرسة — القائد مؤمن القصاص</title>
+    <title>منصة اتحاد الطلاب</title>
     
-    <!-- الخطوط وأيقونات Lucide -->
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet">
+    <!-- خطوط وأيقونات -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
 
-    <!-- ربط ملف التنسيقات CSS -->
     <link rel="stylesheet" href="style.css">
-
-    <!-- ربط ملف الجافاسكريبت مع خاصية defer للتوصيل المثالي -->
     <script src="script.js" defer></script>
 </head>
 <body>
 
-    <div class="noise"></div>
-    <div class="ambient ambient-a"></div>
-    <div class="ambient ambient-b"></div>
+    <main class="app-container">
 
-    <!-- الشريط العلوي -->
-    <header class="topbar">
-        <a href="#" class="brand">
-            <div class="brand-mark">م</div>
-            <div>
-                <b>اتحاد طلاب المدرسة</b>
-                <small>القائد مؤمن القصاص</small>
-            </div>
-        </a>
-        <nav>
-            <a href="#hero">الرئيسية</a>
-            <a href="#registration">الانضمام</a>
-        </nav>
-        <button id="themeBtn" class="icon-btn" aria-label="تغيير المظهر">
-            <i data-lucide="moon"></i>
-        </button>
-    </header>
-
-    <main class="shell">
-        <!-- القسم الرئيسي (Hero) -->
-        <section id="hero" class="hero">
-            <div class="hero-copy">
-                <div class="eyebrow"><i></i> منصة الاتحاد الرسمية</div>
-                <h1>صوتك... <em>قوتك</em> وفكرك يصنع المستقبل 🚀</h1>
-                <p class="lead">انضم لأقوى كيان طلابي في المدرسة</p>
-                <p class="description">
-                    فرصتك لتضع بصمتك وتشارك في صناعة الأنشطة، وتطور مهاراتك القيادية مع <strong>اتحاد الطلاب</strong>.
-                </p>
-                <button class="primary-btn" data-start>
-                    <span>ابدأ رحلة الانضمام الآن</span>
-                    <i data-lucide="arrow-left"></i>
-                </button>
-                <div class="micro-stats">
-                    <span>
-                        <b id="visitorCount">1,280</b>
-                        <small>زيارة للمنصة</small>
-                    </span>
-                </div>
-            </div>
-
-            <!-- بطاقة القائد -->
-            <div class="leader-card">
-                <div class="card-glow"></div>
-                <div class="leader-top">
-                    <span>مؤسس المنصة</span>
-                    <span class="live-dot">● نشط الآن</span>
-                </div>
-                <div class="portrait-wrap">
-                    <div class="orbit"></div>
-                    <div class="portrait-ring">
-                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=400" alt="القائد مؤمن القصاص">
-                    </div>
-                </div>
-                <h2>مؤمن القصاص</h2>
-                <div class="role">مؤسس منصة اتحاد الطلاب</div>
-                <div class="role-list">
-                    <span>🎯 قيادة وتنظيم الفعاليات</span>
-                    <span>🚀 تطوير الكيانات الطلابية</span>
-                </div>
-                <div class="card-signature">نعمل معاً لصنع جيل قائد 💡</div>
-            </div>
-        </section>
-
-        <!-- المميزات -->
-        <div class="feature-strip">
-            <article>
-                <b>01</b>
-                <strong>تطوير المهارات</strong>
-                <span>ورش عمل وقيادة حقيقية</span>
-            </article>
-            <article>
-                <b>02</b>
-                <strong>لجان متنوعة</strong>
-                <span>رياضية، ثقافية، واجتماعية</span>
-            </article>
-            <article>
-                <b>03</b>
-                <strong>أنشطة مستمرة</strong>
-                <span>مسابقات ورحلات وفعاليات</span>
-            </article>
-            <article>
-                <b>04</b>
-                <strong>شهادة مشاركة</strong>
-                <span>توثيق رسمي لدورك القيادي</span>
-            </article>
+        <!-- ٩. عداد الزوار -->
+        <div class="visitor-counter">
+            <i data-lucide="eye"></i>
+            <span>عدد زوار المنصة: </span>
+            <strong id="visitorCount">1,280</strong>
         </div>
 
-        <!-- نموذج التسجيل المتقدم -->
-        <section id="registration" class="registration hidden">
-            <div class="section-head">
-                <div class="step-badge">
-                    <span id="stepNumber">01</span>
-                    <small>/07</small>
-                </div>
-                <h2 id="stepTitle">خلينا نتعرف عليك 👋🏻</h2>
+        <!-- ٨. بطاقة مؤمن القصاص -->
+        <section class="momen-card">
+            <div class="glow-avatar-frame">
+                <img src="https://i.postimg.cc/8cYvWqqs/IMG20260924082419.jpg" alt="مؤمن القصاص">
             </div>
-
-            <div class="progress-track">
-                <div id="progressBar"></div>
-            </div>
-
-            <form id="registrationForm">
-                <!-- الخطوة 1 -->
-                <div class="step active-step" data-step="1">
-                    <div class="grid two">
-                        <div class="field">
-                            <span>الاسم الثلاثي أو الرباعي *</span>
-                            <input type="text" id="name" placeholder="اكتب اسمك هنا..." required>
-                        </div>
-                        <div class="field">
-                            <span>الصف الدراسي *</span>
-                            <input type="text" id="grade" placeholder="مثال: الأول الثانوي" required>
-                        </div>
-                        <div class="field">
-                            <span>الفصل *</span>
-                            <input type="text" id="classroom" placeholder="مثال: 1/1" required>
-                        </div>
-                    </div>
-                    <h3>اختر منصبك المرشح له:</h3>
-                    <div class="choice-grid three">
-                        <label class="choice">
-                            <input type="radio" name="position" value="أمين الاتحاد">
-                            <span>أمين الاتحاد</span>
-                        </label>
-                        <label class="choice">
-                            <input type="radio" name="position" value="الأمين المساعد">
-                            <span>الأمين المساعد</span>
-                        </label>
-                        <label class="choice">
-                            <input type="radio" name="position" value="عضو لجنة">
-                            <span>عضو لجنة</span>
-                        </label>
-                    </div>
-                </div>
-
-                <!-- الخطوة 2 -->
-                <div class="step" data-step="2">
-                    <div class="step-intro">
-                        <span>الخطوة 02</span>
-                        <h3>اختار مكانك في الاتحاد 🎯</h3>
-                        <p>يمكنك اختيار لجنة واحدة أو أكثر ترغب في الانضمام إليها:</p>
-                    </div>
-                    <div class="committee-grid">
-                        <label class="committee">
-                            <input type="checkbox" name="committee" value="اللجنة الرياضية">
-                            <b>⚽</b>
-                            <strong>اللجنة الرياضية</strong>
-                            <small>تنظيم دوريات الكرة والدورات الرياضية</small>
-                        </label>
-                        <label class="committee">
-                            <input type="checkbox" name="committee" value="اللجنة الثقافية">
-                            <b>📚</b>
-                            <strong>اللجنة الثقافية</strong>
-                            <small>مسابقات المجلات والصحافة والإذاعة</small>
-                        </label>
-                        <label class="committee">
-                            <input type="checkbox" name="committee" value="اللجنة الاجتماعية">
-                            <b>🤝</b>
-                            <strong>اللجنة الاجتماعية</strong>
-                            <small>الرحلات والحفلات والأعمال الخيرية</small>
-                        </label>
-                        <label class="committee">
-                            <input type="checkbox" name="committee" value="اللجنة العلمية">
-                            <b>🧪</b>
-                            <strong>اللجنة العلمية</strong>
-                            <small>الابتكارات والمعارض العلمية</small>
-                        </label>
-                    </div>
-                </div>
-
-                <!-- الخطوة 3 -->
-                <div class="step" data-step="3">
-                    <div class="step-intro">
-                        <span>الخطوة 03</span>
-                        <h3>أنت شاطر في إيه؟ 🚀</h3>
-                        <p>حدد المهارات التي تتقنها لتسخيرها في أنشطة الاتحاد:</p>
-                    </div>
-                    <div class="choice-grid">
-                        <label class="choice big">
-                            <input type="checkbox" name="skills" value="التنظيم وإدارة الفعاليات">
-                            <span>التنظيم وإدارة الفعاليات <small>إدارة الجماهير والتنسيق</small></span>
-                        </label>
-                        <label class="choice big">
-                            <input type="checkbox" name="skills" value="الإلقاء والتحدث">
-                            <span>الإلقاء والتقديم الإذاعي <small>صوت قوي وحضور مسرحي</small></span>
-                        </label>
-                        <label class="choice big">
-                            <input type="checkbox" name="skills" value="التصميم والتكنولوجيا">
-                            <span>التصميم والتكنولوجيا <small>فوتوشوب، مونتاج، أو برمجة</small></span>
-                        </label>
-                        <label class="choice big">
-                            <input type="checkbox" name="skills" value="القيادة والتخطيط">
-                            <span>القيادة وإدارة الفرق <small>توزيع المهام ومتابعة الأهداف</small></span>
-                        </label>
-                    </div>
-                </div>
-
-                <!-- الخطوة 4 -->
-                <div class="step" data-step="4">
-                    <div class="step-intro">
-                        <span>الخطوة 04</span>
-                        <h3>بتحب تنفذ أنشطة فين؟ 🔥</h3>
-                    </div>
-                    <div class="mini-grid">
-                        <label><input type="checkbox" name="activities" value="داخل المدرسة"> 🏫 داخل المدرسة (فناء/مسرح/فصول)</label>
-                        <label><input type="checkbox" name="activities" value="رحلات خارجية"> 🚌 رحلات ومعسكرات خارجية</label>
-                        <label><input type="checkbox" name="activities" value="أونلاين ومنصات"> 💻 أنشطة إلكترونية ومنصات</label>
-                        <label><input type="checkbox" name="activities" value="مسابقات بين المدارس"> 🏆 مسابقات على مستوى الإدارة</label>
-                    </div>
-                    <div class="stack">
-                        <div class="field wide">
-                            <span>هوايات واهتمامات إضافية:</span>
-                            <input type="text" id="hobbies" placeholder="مثال: الرسم، الشطرنج، كتابة الشعر...">
-                        </div>
-                    </div>
-                </div>
-
-                <!-- الخطوة 5 -->
-                <div class="step" data-step="5">
-                    <div class="step-intro">
-                        <span>الخطوة 05</span>
-                        <h3>عرفنا أكتر عنك ✨</h3>
-                    </div>
-                    <div class="stack">
-                        <div class="field">
-                            <span>ما هي معرفتك السابقة باتحاد الطلاب؟</span>
-                            <input type="text" id="unionKnowledge" placeholder="اكتب خبرتك السابقة أو توقعاتك...">
-                        </div>
-                        <div class="field">
-                            <span>عرفت الاتحاد عن طريق مين؟</span>
-                            <input type="text" id="introducedBy" placeholder="صديق، رائد الفصل، الإذاعة...">
-                        </div>
-                        <div class="grid two">
-                            <div class="field">
-                                <span>رقم الواتساب (اختياري)</span>
-                                <input type="tel" id="phone" placeholder="01xxxxxxxxx">
-                            </div>
-                            <div class="field">
-                                <span>البريد الإلكتروني (اختياري)</span>
-                                <input type="email" id="email" placeholder="example@gmail.com">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- الخطوة 6 -->
-                <div class="step" data-step="6">
-                    <div class="step-intro">
-                        <span>الخطوة 06</span>
-                        <h3>رأيك يهمنا ⭐</h3>
-                        <p>ما تقييمك لفكرة المنصة وتسهيل عملية الانضمام؟</p>
-                    </div>
-                    <div class="stars" id="rating">
-                        <button type="button" data-value="5">★</button>
-                        <button type="button" data-value="4">★</button>
-                        <button type="button" data-value="3">★</button>
-                        <button type="button" data-value="2">★</button>
-                        <button type="button" data-value="1">★</button>
-                    </div>
-                    <div class="field wide">
-                        <span>اقتراح أو كلمة حابب توجها لاتحاد الطلاب:</span>
-                        <textarea id="message" placeholder="اكتب اقتراحك هنا..."></textarea>
-                    </div>
-                </div>
-
-                <!-- الخطوة 7 -->
-                <div class="step" data-step="7">
-                    <div class="final-check">
-                        <div>✓</div>
-                        <span>مراجعة البيانات الأخيرة</span>
-                        <h3>آخر خطوة... جاهز؟ 🚀</h3>
-                        <p>تأكد من صحة البيانات التالية قبل الإرسال عبر الواتساب:</p>
-                    </div>
-                    <div id="review" class="review"></div>
-                    <button type="submit" class="send-btn">
-                        <span>تأكيد وإرسال البيانات عبر الواتساب</span>
-                        <i data-lucide="send"></i>
-                    </button>
-                    <p class="send-note">سيتم توجيهك مباشرة للواتساب لإرسال بيانات استمارة الانضمام.</p>
-                </div>
-
-                <!-- أزرار التنقل -->
-                <div class="form-nav">
-                    <button type="button" id="prevBtn" class="back-btn">السابق</button>
-                    <button type="button" id="nextBtn" class="next-btn">التالي ➔</button>
-                </div>
-            </form>
+            <h2>مؤمن هشام سعد القصاص</h2>
+            <p class="role-text">أمين اتحاد مدرسة الشهيد محمد فؤاد</p>
+            <p class="role-text">أمين اتحاد سيدي سالم</p>
+            <p class="role-text">المبتكر الصغير للمرحلة الثانوية</p>
+            <div class="card-quote">«المنصة مش للإنجازات بس… نبذة صغيرة 🐈»</div>
         </section>
 
-        <!-- شاشة النجاح والشهادة -->
-        <section id="success" class="success hidden">
-            <div class="success-card">
-                <div class="success-mark">✓</div>
-                <span class="success-label">تم الإرسال بنجاح</span>
-                <h2 id="certificateName">أهلًا بيك يا قائد</h2>
-                <p>تم استلام طلب انضمامك بنجاح وسيتواصل معك مكتب الاتحاد قريبًا.</p>
+        <!-- ١. شاشة البداية -->
+        <section id="welcomeSection" class="section-box">
+            <h1 class="welcome-title">«أهلا بيك يا قائد 🫵🏻»</h1>
+            <p class="welcome-desc">«أيوه أنت، أنت هنا في مكان اللي بيدخل فيه لازم يستحمل شغل جاااامد جدًا»</p>
+            <button id="startBtn" class="btn-glow">ابدأ</button>
+        </section>
 
-                <div class="certificate">
-                    <small>شهادة انضمام مبدئية</small>
-                    <h3>بطاقة العضوية القيادية</h3>
-                    <p>تشهد إدارة اتحاد الطلاب بأن القائد <strong id="certificateStudent">--</strong> قد أتم خطوات التسجيل بنجاح والانضمام للكيان الطلابي.</p>
-                    <strong>منصة اتحاد طلاب المدرسة</strong>
-                    <span>المؤسس: القائد مؤمن القصاص</span>
+        <!-- النماذج متسلسلة -->
+        <form id="unionForm" class="hidden">
+
+            <!-- ٢. بيانات الطالب -->
+            <section class="section-box">
+                <h2 class="box-title">بيانات الطالب</h2>
+                
+                <div class="input-group">
+                    <label for="fullName">الاسم بالكامل</label>
+                    <input type="text" id="fullName" required>
                 </div>
 
-                <button class="primary-btn" onclick="window.print()">
-                    <span>طباعة الشهادة / حفظ PDF</span>
-                    <i data-lucide="printer"></i>
+                <div class="input-group">
+                    <label for="grade">الصف الدراسي</label>
+                    <input type="text" id="grade" required>
+                </div>
+
+                <div class="selector-title">المنصب في الاتحاد:</div>
+                <div class="options-grid">
+                    <label class="option-card">
+                        <input type="radio" name="position" value="أمين" required>
+                        <span>أمين</span>
+                    </label>
+                    <label class="option-card">
+                        <input type="radio" name="position" value="أمين مساعد">
+                        <span>أمين مساعد</span>
+                    </label>
+                    <label class="option-card">
+                        <input type="radio" name="position" value="مقرر لجنة">
+                        <span>مقرر لجنة</span>
+                    </label>
+                </div>
+
+                <div class="selector-title">اللجنة:</div>
+                <div class="options-grid">
+                    <label class="option-card">
+                        <input type="radio" name="committee" value="ديني وثقافي" required>
+                        <span>ديني وثقافي</span>
+                    </label>
+                    <label class="option-card">
+                        <input type="radio" name="committee" value="علمي">
+                        <span>علمي</span>
+                    </label>
+                    <label class="option-card">
+                        <input type="radio" name="committee" value="فني">
+                        <span>فني</span>
+                    </label>
+                    <label class="option-card">
+                        <input type="radio" name="committee" value="رياضي">
+                        <span>رياضي</span>
+                    </label>
+                    <label class="option-card">
+                        <input type="radio" name="committee" value="اجتماعي">
+                        <span>اجتماعي</span>
+                    </label>
+                </div>
+            </section>
+
+            <!-- ٣. أسئلة الفريق -->
+            <section class="section-box">
+                <h2 class="box-title">أسئلة الفريق</h2>
+
+                <div class="selector-title">لو أنت في فريق الاتحاد، تختار إيه؟</div>
+                <div class="options-grid vertical">
+                    <label class="option-card">
+                        <input type="radio" name="teamRole" value="تشرح" required>
+                        <span>تشرح</span>
+                    </label>
+                    <label class="option-card">
+                        <input type="radio" name="teamRole" value="تصور وتوثق اللحظات">
+                        <span>تصور وتوثق اللحظات</span>
+                    </label>
+                    <label class="option-card">
+                        <input type="radio" name="teamRole" value="توزع الورق وتجمع البيانات">
+                        <span>توزع الورق وتجمع البيانات</span>
+                    </label>
+                </div>
+
+                <div class="selector-title">أي مجال نشاط بتحبه؟</div>
+                <div class="options-grid">
+                    <label class="option-card">
+                        <input type="radio" name="activityField" value="ديني وثقافي" required>
+                        <span>ديني وثقافي</span>
+                    </label>
+                    <label class="option-card">
+                        <input type="radio" name="activityField" value="علمي">
+                        <span>علمي</span>
+                    </label>
+                    <label class="option-card">
+                        <input type="radio" name="activityField" value="فني">
+                        <span>فني</span>
+                    </label>
+                    <label class="option-card">
+                        <input type="radio" name="activityField" value="رياضي">
+                        <span>رياضي</span>
+                    </label>
+                    <label class="option-card">
+                        <input type="radio" name="activityField" value="اجتماعي">
+                        <span>اجتماعي</span>
+                    </label>
+                </div>
+
+                <div class="input-group">
+                    <label for="hobby">هوايتك؟</label>
+                    <input type="text" id="hobby" required>
+                </div>
+
+                <div class="input-group">
+                    <label for="unionKnowledge">إيه اللي تعرفه عن اتحاد الطلاب؟</label>
+                    <textarea id="unionKnowledge" rows="3" required></textarea>
+                </div>
+
+                <div class="input-group">
+                    <label for="referrer">مين الشخص اللي عرفك على الاتحاد؟</label>
+                    <input type="text" id="referrer" required>
+                </div>
+            </section>
+
+            <!-- ٤. تقييم مؤمن القصاص -->
+            <section class="section-box">
+                <h2 class="box-title">«قيّم مؤمن القصاص أمين عام الاتحاد»</h2>
+                
+                <div class="star-rating" id="starRating">
+                    <button type="button" data-value="5">★</button>
+                    <button type="button" data-value="4">★</button>
+                    <button type="button" data-value="3">★</button>
+                    <button type="button" data-value="2">★</button>
+                    <button type="button" data-value="1">★</button>
+                </div>
+
+                <div class="input-group">
+                    <label for="momenReview">رأي مختصر:</label>
+                    <textarea id="momenReview" rows="2"></textarea>
+                </div>
+            </section>
+
+            <!-- ٥. حفظ البيانات -->
+            <section class="action-box">
+                <button type="button" id="saveDataBtn" class="btn-secondary">
+                    💾 حفظ المعلومات
                 </button>
+                <p id="saveMessage" class="save-toast hidden">تم حفظ البيانات بنجاح!</p>
+            </section>
+
+            <!-- ٦. الإرسال النهائي -->
+            <section class="action-box">
+                <button type="submit" class="btn-whatsapp">
+                    🚀 إرسال التسجيل
+                </button>
+            </section>
+        </form>
+
+        <!-- ٧. الشهادة -->
+        <section id="certificateSection" class="certificate-box hidden">
+            <div class="cert-border">
+                <h2 id="certStudentName">اسم الطالب</h2>
+                <p class="cert-phrase">قائد متميز</p>
+                <div class="cert-footer">مؤمن</div>
             </div>
         </section>
+
     </main>
-
-    <footer>
-        <div>
-            <b>منصة اتحاد الطلاب</b>
-            <span>جميع الحقوق محفوظة 🐈♥ © 2026</span>
-        </div>
-        <div>
-            <span>تطوير وإشراف: <b>مؤمن القصاص</b></span>
-        </div>
-    </footer>
 
 </body>
 </html>
